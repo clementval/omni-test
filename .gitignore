@@ -2,3 +2,9 @@
 *.xmod
 
 *.mod
+
+*.o
+
+*.xml
+
+*.out
