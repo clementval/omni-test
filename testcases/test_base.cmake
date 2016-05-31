@@ -9,19 +9,14 @@ set(XCODEML_FILE   ${CMAKE_CURRENT_SOURCE_DIR}/transformed_code.xml)
 set(OUTPUT_FILE    ${CMAKE_CURRENT_SOURCE_DIR}/transformed_code.f90)
 set(REFERENCE_FILE ${CMAKE_CURRENT_SOURCE_DIR}/reference.f90)
 
-# Transform Fortran to XcodeML
-add_custom_command(
-  OUTPUT  ${XCODEML_FILE}
-  COMMAND ${OMNI_F_FRONT} -o ${XCODEML_FILE} ${ORIGINAL_FILE}
+# Transform Fortran to XcodeML to Fortran
+add_custom_target(transform-${TEST_NAME}
+  ${OMNI_F_FRONT} -o ${XCODEML_FILE} ${ORIGINAL_FILE}
+  COMMAND ${Java_JAVA_EXECUTABLE} -cp ${OMNI_F_BACK_JARS} ${OMNI_F_BACK} -l -w 80 -o ${OUTPUT_FILE} ${XCODEML_FILE}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   DEPENDS ${ORIGINAL_FILE}
-  COMMENT "Precoss original code with Fortran front-end (${OMNI_F_FRONT})"
+  COMMENT "Process XcodeML to Fortran with OMNI Fortran back-end (${OMNI_F_BACK})"
 )
-add_custom_target(
-  transform-${TEST_NAME}
-  DEPENDS ${XCODEML_FILE}
-)
-
 
 # Target to clean the generated file
 add_custom_target(
@@ -32,3 +27,8 @@ add_custom_target(
 # Add local targets to the global targets
 add_dependencies(${BUILD_TEST_TARGET} transform-${TEST_NAME})
 add_dependencies(${CLEAN_TEST_TARGET} clean-${TEST_NAME})
+
+# Add test targets
+add_test(NAME omni-transform-${TEST_NAME} COMMAND "${CMAKE_COMMAND}"  --build ${CMAKE_BINARY_DIR} --target transform-${TEST_NAME})
+add_test(NAME omni-compare-${TEST_NAME} COMMAND diff ${OUTPUT_FILE} ${REFERENCE_FILE})
+set_tests_properties(omni-compare-${TEST_NAME} PROPERTIES DEPENDS omni-transform-${TEST_NAME})
