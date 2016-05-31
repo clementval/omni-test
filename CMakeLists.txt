@@ -22,4 +22,4 @@ add_custom_target(${BUILD_TEST_TARGET})
 add_custom_target(${CLEAN_TEST_TARGET})
 
 # Add test suite directory
-add_subdirectory(testcases)
+add_subdirectory(test)
