@@ -1,22 +1,25 @@
 # This file is released under terms of BSD license
 # See LICENSE file for more information
 
-# This CMakeLists.txt file is the entry point for the configuration and the
-# compilation of the CLAW Fortran compiler.
+# This CMakeLists.txt file is the entry point for the compilation and the
+# execution of simple test cases for the OMNI Compiler Fortran front-end and
+# back-end
 
 cmake_minimum_required(VERSION 2.8)
 
 project(omni-test)
 
 enable_language(Fortran)
+
 enable_testing()
 
-find_package(Java REQUIRED)
-include(UseJava)
+include(omni.cmake)
 
-set(OMNI_DEV_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../omni-compiler" CACHE FILEPATH "OMNI Compiler development repository location")
+# set up global transform and clean target
+set(BUILD_TEST_TARGET transformation)
+set(CLEAN_TEST_TARGET clean-transformation)
+add_custom_target(${BUILD_TEST_TARGET})
+add_custom_target(${CLEAN_TEST_TARGET})
 
-set(OMNI_F_FRONT ${OMNI_DEV_PATH}/F-FrontEnd/src/F_Front)
-set(OMNI_F_BACK  ${OMNI_DEV_PATH}/F-BackEnd/build/om-f-back.jar)
-
+# Add test suite directory
 add_subdirectory(testcases)
