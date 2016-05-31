@@ -7,7 +7,7 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-project(omni-test)
+project(omni-test NONE)
 
 enable_language(Fortran)
 
