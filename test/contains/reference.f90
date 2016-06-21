@@ -10,11 +10,13 @@ MODULE useful
 
 CONTAINS
  SUBROUTINE y ( n1 )
+  use xmpf_coarray_decl
   INTEGER :: n1
 
 
  CONTAINS
   FUNCTION x ( n1 )
+   use xmpf_coarray_decl
    REAL :: x
    REAL :: n1
 
