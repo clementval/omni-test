@@ -9,5 +9,6 @@ MODULE test
   REAL :: w
   PROTECTED :: w
 
-
+  REAL :: v
+  PUBLIC :: v
 END MODULE test
