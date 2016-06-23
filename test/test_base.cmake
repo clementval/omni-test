@@ -21,7 +21,7 @@ add_custom_target(transform-${TEST_NAME}
 # Target to clean the generated file
 add_custom_target(
   clean-${TEST_NAME}
-  COMMAND rm -f ${OUTPUT_FILE} ${XCODEML_FILE}
+  COMMAND rm -f ${OUTPUT_FILE} ${XCODEML_FILE} *.xmod
 )
 
 # Add local targets to the global targets
