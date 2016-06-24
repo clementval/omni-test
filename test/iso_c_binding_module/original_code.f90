@@ -1,21 +1,37 @@
 MODULE consumer
   USE, INTRINSIC :: iso_c_binding 
 
+  INTEGER(C_INT), BIND(C) :: C2
 
 INTERFACE
   FUNCTION dosleep(seconds) BIND (C, name="sleep")
-!    IMPORT :: c_int
+    IMPORT :: c_int, C_size_t
     INTEGER (c_int) :: dosleep
-!    INTEGER (c_int), INTENT(IN), VALUE :: seconds
+    INTEGER (c_int), INTENT(IN), VALUE :: seconds
   END FUNCTION dosleep
+
+  FUNCTION C_LIBRARY_FUNCTION(SENDBUF, SENDCOUNT) &
+    BIND(C, NAME='C_Library_Function')
+    USE ISO_C_BINDING
+    IMPLICIT NONE
+    TYPE (C_PTR), VALUE :: SENDBUF 
+    INTEGER (C_INT), VALUE :: SENDCOUNT 
+  END FUNCTION C_LIBRARY_FUNCTION
+
+!  FUNCTION C_LIBRARY_FUNCTION(SENDBUF, SENDCOUNT, RECVCOUNTS) &
+!    BIND(C, NAME='C_Library_Function')
+!    USE ISO_C_BINDING
+!    IMPLICIT NONE
+!    TYPE (C_PTR), VALUE :: SENDBUF 
+!    INTEGER (C_INT), VALUE :: SENDCOUNT 
+!    TYPE (C_PTR), VALUE :: RECVCOUNTS
+!  END FUNCTION C_LIBRARY_FUNCTION
 END INTERFACE
 
 CONTAINS
   FUNCTION SLEEP() BIND(C, NAME="sleep") 
-
   END FUNCTION SLEEP
 
   SUBROUTINE dummy() BIND(C, NAME="dummySleep") 
-
   END SUBROUTINE dummy
 END MODULE consumer
