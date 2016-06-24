@@ -11,9 +11,9 @@ MODULE fttimerclass
   LOGICAL :: stopped = .FALSE.
   REAL ( KIND= tp ) :: starttime = 0.0_tp
   REAL ( KIND= tp ) :: finishtime = 0.0_tp
-  PROCEDURE :: start => startTimer
-  PROCEDURE :: stop => stopTimer
-  PROCEDURE :: elapsedTime
+  PROCEDURE , PASS :: start => startTimer
+  PROCEDURE , PASS :: stop => stopTimer
+  PROCEDURE , PASS :: elapsedtime
  END TYPE fttimer
  PRIVATE :: elapsedtime
 
