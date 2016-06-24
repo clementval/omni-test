@@ -1,25 +1,9 @@
 MODULE FTTimerClass 
   IMPLICIT NONE
   PRIVATE
-!
-! -----------------
-! Private constants
-! -----------------
-!
   INTEGER, PARAMETER, PRIVATE :: d = 15
-!
-!     ----------------
-!     Public constants
-!     ----------------
-!
   INTEGER, PARAMETER, PUBLIC  :: TP = SELECTED_REAL_KIND(d)
-  INTEGER, PARAMETER, PUBLIC  :: TC_SECONDS = 0, &
-                                     TC_MINUTES = 1, TC_HOURS = 2
-!
-!     ---------------------
-!     Class type definition
-!     ---------------------
-!
+  INTEGER, PARAMETER, PUBLIC  :: TC_SECONDS = 0, TC_MINUTES = 1, TC_HOURS = 2 
   TYPE, PUBLIC :: FTTimer
      LOGICAL      , PRIVATE :: started    = .FALSE.
      LOGICAL      , PRIVATE :: stopped    = .FALSE.
@@ -72,18 +56,12 @@ CONTAINS
 
     ! Convert to requested units if present
     IF ( PRESENT(units) )     THEN
-
        SELECT CASE ( units )
           CASE( TC_MINUTES ) 
-
              elapsedTime = elapsedTime/60.0_TP
-
           CASE( TC_HOURS )
-
              elapsedTime = elapsedTime/3600.0_TP
-
           CASE DEFAULT
-
        END SELECT 
     END IF 
 
