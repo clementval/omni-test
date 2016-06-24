@@ -10,12 +10,9 @@ MODULE FTTimerClass
      REAL(KIND=TP), PRIVATE :: startTime  = 0.0_TP
      REAL(KIND=TP), PRIVATE :: finishTime = 0.0_TP
 
-  !   PROCEDURE, PASS :: start => startTimer
-  !   PROCEDURE, PASS :: stop  => stopTimer
-  !   PROCEDURE, PASS :: elapsedTime         
-     PROCEDURE :: start => startTimer
-     PROCEDURE :: stop  => stopTimer
-     PROCEDURE :: elapsedTime         
+     PROCEDURE, PASS :: start => startTimer
+     PROCEDURE, PASS :: stop  => stopTimer
+     PROCEDURE, PASS :: elapsedTime         
   END TYPE FTTimer
 
 CONTAINS
