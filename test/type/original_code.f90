@@ -6,6 +6,7 @@ MODULE test
     INTEGER           :: id
   CONTAINS
     PROCEDURE :: display_person
+    GENERIC, PUBLIC :: display => display_person
   END TYPE person
 
 CONTAINS
