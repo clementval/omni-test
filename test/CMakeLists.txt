@@ -3,4 +3,5 @@ add_subdirectory(contains)
 #add_subdirectory(iso_c_binding_module)
 add_subdirectory(protected)
 add_subdirectory(private_public)
-add_subdirectory(type)
+add_subdirectory(tbp1)                   # Type-bound procedure #1
+add_subdirectory(tbp2)                   # Type-bound procedure #2
