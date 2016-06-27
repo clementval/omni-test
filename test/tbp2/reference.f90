@@ -7,12 +7,12 @@ MODULE fttimerclass
  INTEGER , PUBLIC , PARAMETER :: tc_hours = 2
  TYPE , PUBLIC :: fttimer
   PRIVATE
-  LOGICAL :: started = .FALSE.
-  LOGICAL :: stopped = .FALSE.
-  REAL ( KIND= tp ) :: starttime = 0.0_tp
-  REAL ( KIND= tp ) :: finishtime = 0.0_tp
-  PROCEDURE , PASS :: start => startTimer
-  PROCEDURE , PASS :: stop => stopTimer
+  LOGICAL , PRIVATE :: started = .FALSE.
+  LOGICAL , PRIVATE :: stopped = .FALSE.
+  REAL ( KIND= tp ) , PRIVATE :: starttime = 0.0_tp
+  REAL ( KIND= tp ) , PRIVATE :: finishtime = 0.0_tp
+  PROCEDURE , PASS :: start => starttimer
+  PROCEDURE , PASS :: stop => stoptimer
   PROCEDURE , PASS :: elapsedtime
  END TYPE fttimer
  PRIVATE :: elapsedtime
