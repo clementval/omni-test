@@ -1,6 +1,6 @@
 MODULE counter_mod
  use xmpf_coarray_decl
- INTEGER :: current = 0
+ INTEGER , PROTECTED :: current = 0
 
 CONTAINS
  FUNCTION next ( )
