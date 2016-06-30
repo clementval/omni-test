@@ -38,7 +38,7 @@ endif()
 # Target to clean the generated file
 add_custom_target(
   clean-${TEST_NAME}
-  COMMAND rm -f ${OUTPUT_FILE} ${XCODEML_FILE} *.xmod
+  COMMAND rm -f ${OUTPUT_FILE} ${OUTPUT_MAIN} ${MAIN_XCML_FILE} ${XCODEML_FILE} *.xmod
 )
 
 # Add local targets to the global targets
