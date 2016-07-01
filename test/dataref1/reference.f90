@@ -8,7 +8,7 @@ MODULE shape_mod
   PROCEDURE :: isfilled
   PROCEDURE :: print_coord
  END TYPE shape
- TYPE :: square
+ TYPE , EXTENDS ( shape ) :: square
  END TYPE square
 
 CONTAINS
