@@ -7,3 +7,4 @@ add_subdirectory(tbp1)                   # Type-bound procedure #1
 add_subdirectory(tbp2)                   # Type-bound procedure #2
 add_subdirectory(tbp3)                   # Type-bound procedure #3
 add_subdirectory(dataref1)               # Call to Type-bound procedure #1
+add_subdirectory(selecttype1)            # select type with class is
