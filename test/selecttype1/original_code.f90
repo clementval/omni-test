@@ -12,10 +12,10 @@ CONTAINS
     CLASS(shape) :: element
 
     SELECT TYPE (element)
-    CLASS IS ()!IS !(shape)
+    CLASS IS (shape)
         PRINT*,'SHAPE'
-  !    CLASS IS (square)
-!        PRINT*,'SQUARE'
+    CLASS IS (square)
+        PRINT*,'SQUARE'
     END SELECT
   END SUBROUTINE select
 end module
