@@ -1,5 +1,5 @@
 PROGRAM test_tbp4
-  USE shape
+  USE shape, ONLY: point
 
   TYPE(point) :: a
   TYPE(point) :: b
@@ -11,7 +11,7 @@ PROGRAM test_tbp4
   b%x = 3.0
   b%y = 3.0
 
-  result = a%length(b)
+  result = a%len(b)
 
   PRINT*,'LENGTH A-B = ', result
 

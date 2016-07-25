@@ -1,18 +1,20 @@
 MODULE shape
   IMPLICIT NONE
 
-  TYPE :: POINT
-    REAL :: X, Y
+  TYPE :: point
+    REAL :: x, y
     CONTAINS
-      PROCEDURE, PASS :: LENGTH
+      PROCEDURE, PASS :: length
+
+      GENERIC :: len => length
   END TYPE POINT
 
 CONTAINS
 
-  FUNCTION LENGTH (A, B) RESULT(result_value)
-    CLASS (POINT), INTENT (IN) :: A, B
+  FUNCTION length (a, b) RESULT(result_value)
+    CLASS (point), INTENT (IN) :: a, b
     REAL :: result_value
-    result_value = SQRT ( (A%X - B%X)**2 + (A%Y - B%Y)**2 )
-  END FUNCTION LENGTH
+    result_value = SQRT ( (a%x - b%x)**2 + (a%y - b%y)**2 )
+  END FUNCTION length
 
 END MODULE shape
