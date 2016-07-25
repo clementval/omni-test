@@ -1,18 +1,21 @@
-PROGRAM test_tbp4
+MODULE test_tbp4
   USE shape, ONLY: point
 
-  TYPE(point) :: a
-  TYPE(point) :: b
-  REAL :: result
+CONTAINS
 
-  a%x = 1.0
-  a%y = 1.0
+  REAL FUNCTION test(a,b)
+    TYPE(point) :: a
+    TYPE(point) :: b
+    REAL :: test
 
-  b%x = 3.0
-  b%y = 3.0
+    a%x = 1.0
+    a%y = 1.0
 
-  result = a%len(b)
+    b%x = 3.0
+    b%y = 3.0
 
-  PRINT*,'LENGTH A-B = ', result
+    test = a%len(b)
 
-END PROGRAM test_tbp4
+    PRINT*,'LENGTH A-B = ', test
+  END FUNCTION test
+END MODULE test_tbp4
