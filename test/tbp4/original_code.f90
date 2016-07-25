@@ -4,14 +4,15 @@ MODULE shape
   TYPE :: POINT
     REAL :: X, Y
     CONTAINS
-      PROCEDURE, PASS :: LENGTH => POINT_LENGTH
+      PROCEDURE, PASS :: LENGTH
   END TYPE POINT
 
 CONTAINS
 
-  REAL FUNCTION POINT_LENGTH (A, B)
+  FUNCTION LENGTH (A, B) RESULT(result_value)
     CLASS (POINT), INTENT (IN) :: A, B
-    POINT_LENGTH = SQRT ( (A%X - B%X)**2 + (A%Y - B%Y)**2 )
-  END FUNCTION POINT_LENGTH
+    REAL :: result_value
+    result_value = SQRT ( (A%X - B%X)**2 + (A%Y - B%Y)**2 )
+  END FUNCTION LENGTH
 
 END MODULE shape
