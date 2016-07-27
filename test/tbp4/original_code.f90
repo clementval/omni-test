@@ -4,7 +4,7 @@ MODULE shape
   TYPE :: point
     REAL :: x, y
     CONTAINS
-      PROCEDURE, PASS :: length
+      PROCEDURE, PRIVATE :: length
 
       GENERIC :: len => length
   END TYPE POINT
