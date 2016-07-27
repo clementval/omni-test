@@ -6,7 +6,7 @@ MODULE shape
     CONTAINS
       PROCEDURE, PRIVATE :: length
 
-      GENERIC :: len => length
+      GENERIC :: plen => length
   END TYPE POINT
 
 CONTAINS

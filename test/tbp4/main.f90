@@ -1,5 +1,5 @@
 MODULE test_tbp4
-  USE shape, ONLY: point
+  USE shape
 
 CONTAINS
 
@@ -14,7 +14,7 @@ CONTAINS
         b%x = 3.0
         b%y = 3.0
 
-        test = a%len(b)
+        test = a%plen(b)
 
         PRINT*,'LENGTH A-B = ', test
   END FUNCTION test
