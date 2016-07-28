@@ -13,7 +13,8 @@ CONTAINS
 
         b%x = 3.0
         b%y = 3.0
-
+        
+        test = a%length(b)
         test = a%plen(b)
 
         PRINT*,'LENGTH A-B = ', test
