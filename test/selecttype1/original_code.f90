@@ -16,6 +16,8 @@ CONTAINS
         PRINT*,'SHAPE'
     CLASS IS (square)
         PRINT*,'SQUARE'
+    CLASS DEFAULT
+        PRINT*,'DEFAULT'
     END SELECT
   END SUBROUTINE select
 end module
