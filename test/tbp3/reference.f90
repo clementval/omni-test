@@ -3,6 +3,7 @@ MODULE tbpinterfacetest
  TYPE :: point
   REAL :: x
   REAL :: y
+  CONTAINS
   PROCEDURE , PASS :: length => point_length
  END TYPE point
 

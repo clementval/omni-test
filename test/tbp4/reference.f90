@@ -3,6 +3,7 @@ MODULE shape
  TYPE :: point
   REAL :: x
   REAL :: y
+  CONTAINS
   PROCEDURE :: length
   GENERIC :: plen => length
  END TYPE point
