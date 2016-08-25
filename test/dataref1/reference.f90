@@ -5,6 +5,7 @@ MODULE shape_mod
   LOGICAL :: filled
   INTEGER :: x
   INTEGER :: y
+  CONTAINS
   PROCEDURE :: isfilled
   PROCEDURE :: print_coord
  END TYPE shape
