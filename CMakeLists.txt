@@ -23,3 +23,6 @@ add_custom_target(${CLEAN_TEST_TARGET})
 
 # Add test suite directory
 add_subdirectory(test)
+
+# Custom target to run the full transformation test suite
+add_custom_target(test-suite COMMAND ${CMAKE_MAKE_PROGRAM} ${CLEAN_TEST_TARGET} ${BUILD_TEST_TARGET} test)
