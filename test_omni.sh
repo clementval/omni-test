@@ -63,9 +63,9 @@ function run_tests {
 
 # Define local variable
 OMNI_BRANCH="master"
-OMNI_MAIN_REPO="git@github.com:omni-compiler/omni-compiler.git"
-OMNI_FORK_MCH_REPO="git@github.com:MeteoSwiss-APN/omni-compiler.git"
-OMNI_FORK_REPO="git@github.com:clementval/omni-compiler-1.git"
+OMNI_MAIN_REPO="https://github.com/omni-compiler/omni-compiler.git"
+OMNI_FORK_MCH_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
+OMNI_FORK_REPO="https://github.com/clementval/omni-compiler-1.git"
 OMNI_REPO=$OMNI_MAIN_REPO
 OMNI_TEST_DIR=test_omni
 OMNI_INSTALL_DIR=$PWD/$OMNI_TEST_DIR/install
