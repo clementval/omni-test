@@ -15,6 +15,7 @@ matrix:
         - CXX_COMPILER=g++-4.9
         - CC_COMPILER=gcc-4.9
         - FC_COMPILER=gfortran-4.9
+        - ORIGIN=true  # Will build the mastert branch from the original repo
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
@@ -22,9 +23,20 @@ matrix:
             - gcc-4.9
             - g++-4.9
             - gfortran-4.9
-  env:
-    - ORIGIN=true  # Will build the mastert branch from the original repo
-    - ORIGIN=false # Will build the claw branch from MeteoSwiss-APN repo
+    - compiler: gcc
+      env:
+        - CXX_COMPILER=g++-4.9
+        - CC_COMPILER=gcc-4.9
+        - FC_COMPILER=gfortran-4.9
+        - ORIGIN=false # Will build the claw branch from MeteoSwiss-APN repo
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages:
+            - gcc-4.9
+            - g++-4.9
+            - gfortran-4.9
+
 
 # Fetch submodule for omni-compiler repository
 before_install:
