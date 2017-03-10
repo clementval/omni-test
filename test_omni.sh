@@ -34,9 +34,17 @@ function check_ret_value {
 }
 
 function run_tests {
+  TESTS=()
+  TESTS+=("kind1/simple_kind.f90")
+  TESTS+=("kind2/issue108_mod.f90")
+  TESTS+=("kind2/issue108_prog.f90")
+
   # Some regression tests
-  ./F-FrontEnd/src/F_Front ../../test/kind1/simple_kind.f90 > /dev/null
-  check_ret_value "kind1/simple_kind.f90"
+  for t in ${TESTS[@]}
+  do
+    ./F-FrontEnd/src/F_Front ../../test/$t > /dev/null
+    check_ret_value "$t"
+  done
 }
 
 # Define local variable
