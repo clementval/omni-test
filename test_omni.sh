@@ -52,10 +52,11 @@ OMNI_BRANCH="master"
 OMNI_MAIN_REPO="git@github.com:omni-compiler/omni-compiler.git"
 OMNI_FORK_MCH_REPO="git@github.com:MeteoSwiss-APN/omni-compiler.git"
 OMNI_FORK_REPO="igit@github.com:clementval/omni-compiler-1.git"
-OMNI__REPO=$OMNI_MAIN_REPO
+OMNI_REPO=$OMNI_MAIN_REPO
 OMNI_TEST_DIR=test_omni
 OMNI_INSTALL_DIR=$PWD/$OMNI_TEST_DIR/install
 OMNI_BASE_COMPILER="gnu"
+OMNI_DIR="omni-compiler"
 
 while getopts "hftmb:c:" opt; do
   case "$opt" in
@@ -68,6 +69,7 @@ while getopts "hftmb:c:" opt; do
     ;;
   f)
     OMNI_REPO=$OMNI_FORK_REPO
+    OMNI_DIR="omni-compiler-1"
     ;;
   b)
     OMNI_BRANCH=$OPTARG
@@ -77,7 +79,7 @@ while getopts "hftmb:c:" opt; do
     ;;
   t)
     cd $OMNI_TEST_DIR
-    cd omni-compiler
+    cd $OMNI_DIR
     run_tests
     exit
     ;;
@@ -128,12 +130,15 @@ rm -rf $OMNI_TEST_DIR
 mkdir $OMNI_TEST_DIR
 cd $OMNI_TEST_DIR
 
-# Retrive repository and branch
+# Retrieve repository and branch
 git clone -b $OMNI_BRANCH $OMNI_REPO
-cd omni-compiler
+cd $OMNI_DIR
 
-# Configuree
+# Configure
 FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure
 
 # Compile
 make
+
+# Run the regression tests
+run_tests
