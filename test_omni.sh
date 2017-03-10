@@ -54,8 +54,10 @@ function run_tests {
   if [[ ${#TESTS[@]} -ne $SUCCEED_TEST ]]
   then
     print_red "[FAILED TESTS $FAILED_TEST/${#TESTS[@]}]"
+    exit 1
   else
     print_green "[ALL TESTS SUCCEED $SUCCEED_TEST/${#TESTS[@]}]"
+    exit 0
   fi
 }
 
