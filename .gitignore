@@ -20,3 +20,6 @@ Testing
 # Test generated files
 transformed_code.f90
 transformed_main.f90
+
+# OMNI Compiler test dir
+test_omni
