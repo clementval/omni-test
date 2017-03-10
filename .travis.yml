@@ -22,6 +22,9 @@ matrix:
             - gcc-4.9
             - g++-4.9
             - gfortran-4.9
+  env:
+    - ORIGIN=true  # Will build the mastert branch from the original repo
+    - ORIGIN=false # Will build the claw branch from MeteoSwiss-APN repo
 
 # Fetch submodule for omni-compiler repository
 before_install:
@@ -45,7 +48,8 @@ before_script:
 
 # Build CLAW FORTRAN Compiler and execute the test suite
 script:
-  - ./test_omni.sh
+  - if [[ $ORIGIN == true ]]; then ./test_omni.sh; fi
+  - if [[ $ORIGIN == false ]]; then ./test_omni.sh -b claw -m; fi
 
 # Notification settings
 notifications:
