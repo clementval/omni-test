@@ -1,5 +1,7 @@
 # omni-test
 
+[![Build Status](https://travis-ci.org/clementval/omni-test.svg?branch=master)](https://travis-ci.org/clementval/omni-test)
+
 This repository is just a placeholder for test cases checking the correctness
 of the OMNI Compiler Fortran front-end and back-end.
 
