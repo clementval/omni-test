@@ -28,8 +28,10 @@ function check_ret_value {
   if [[ $? -ne 0 ]]
   then
     print_red "[$1 FAILED]"
+    FAILED_TEST=$((FAILED_TEST+1))
   else
     print_green "[$1 SUCCESS]"
+    SUCCEED_TEST=$((SUCCEED_TEST+1))
   fi
 }
 
@@ -39,12 +41,22 @@ function run_tests {
   TESTS+=("kind2/issue108_mod.f90")
   TESTS+=("kind2/issue108_prog.f90")
 
+  SUCCEED_TEST=0
+  FAILED_TEST=0
+
   # Some regression tests
   for t in ${TESTS[@]}
   do
     ./F-FrontEnd/src/F_Front ../../test/$t > /dev/null
     check_ret_value "$t"
   done
+
+  if [[ ${#TESTS[@]} -ne $SUCCEED_TEST ]]
+  then
+    print_red "[FAILED TESTS $FAILED_TEST/${#TESTS[@]}]"
+  else
+    print_green "[ALL TESTS SUCCEED $SUCCEED_TEST/${#TESTS[@]}]"
+  fi
 }
 
 # Define local variable
