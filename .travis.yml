@@ -66,4 +66,6 @@ script:
 # Notification settings
 notifications:
   slack: meteoswiss-apn:FFUYLitE3BsncqECl4RqlfHP
+    on_success: never
+    on_failure: always
   email: false
